@@ -1,17 +1,13 @@
 import socket
 
-sock=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(("0.0.0.0", 8080))
 
-while True:
-  try:
-    data=sock.recvfrom(4096)
-    print(data)
+cn, adr=sock.accept()
+print(adr)
 
-    if not data:
-      continue
+for i in range(10):
+  cn.send(b'SERVER:!')
 
-    sock.sendto(b'SERVER:1', data[1])
-  except Exception as e:
-    print(e)
-    pass
+cn.close()
+sock.close()
