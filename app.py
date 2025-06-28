@@ -6,6 +6,7 @@ sock.bind(("0.0.0.0", 8080))
 while True:
   try:
     data=sock.recvfrom(4096)
+    print(data)
 
     if not data:
       continue
