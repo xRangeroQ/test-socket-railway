@@ -8,7 +8,7 @@ cn, adr=sock.accept()
 print(adr)
 
 for i in range(10):
-  cn.send(b'SERVER:!')
+  cn.send(b'SERVER:UP\n')
 
 cn.close()
 sock.close()
